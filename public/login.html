@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户登录</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>用户注册</h1>
+<form action="http://localhost:3000/auth/register" method="POST">
+    <label for="username">用户名:</label>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">密码:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <input type="submit" value="注册">
+</form>
+</body>
+</html>
