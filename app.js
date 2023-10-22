@@ -8,12 +8,13 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
 const passport = require('passport');
 const session = require('express-session');
 const config = require('./src/config/config'); // 引入配置文件
 const packageInfo = require('./package.json'); // 引入package.json
 const {logTime} = require('./src/logTime'); // 引入日志时间
+const cors = require('cors'); // 引入跨域模块
+const initializeWebSocketServer = require('./src/websocketServer'); // 引入WebSocket服务器
 
 // 启动日志
 console.log(`${logTime()} Meow Chat Backend Starting...`);
@@ -32,6 +33,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 // 配置静态文件目录（例如，用于存放前端资源）
 app.use(express.static('public'));
@@ -42,29 +44,18 @@ app.get('/', (req, res) => {
     res.send('MAIN ROUTE');
 });
 
+const io = initializeWebSocketServer(http);
+
 // 路由导入
 const captchaRoutes = require('./src/routes/captchaRoutes');
 const authRoutes = require('./src/routes/authRoutes');
-const chatRoutes = require('./src/routes/chatRoutes');
+const chatRoutes = require('./src/routes/chatRoutes')(io);
 
 // 挂载路由模块
 app.use('/captcha', captchaRoutes);
 app.use('/auth', authRoutes);
 app.use('/chat', chatRoutes);
 
-// 启动Socket.IO并处理WebSocket事件
-io.on('connection', (socket) => {
-    console.log('A user connected.');
-
-    // 处理聊天消息
-    socket.on('chat message', (message) => {
-        io.emit('chat message', message); // 广播消息给所有连接的客户端
-    });
-
-    socket.on('disconnect', () => {
-        console.log('A user disconnected.');
-    });
-});
 
 // 启动Express服务器
 const port = config.PORT || 3000;

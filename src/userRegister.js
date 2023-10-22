@@ -4,7 +4,7 @@
 
 const crypto = require('crypto'); // 用于SHA-256哈希
 const db = require('./databasePool');
-const {logTime} = require("./logTime"); // 引入数据库连接池
+const {logTime} = require("./logTime");
 
 // 处理用户注册逻辑
 async function handleRegistration(username, password) {

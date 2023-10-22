@@ -2,9 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单聊天室</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #chat-box {
+            width: 400px;
+            margin: 0 auto;
+        }
+        #messages {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: scroll;
+        }
+        #message-input {
+            width: 100%;
+            padding: 10px;
+        }
+        #send-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 </head>
 <body>
+<div id="chat-box">
+    <h2>简单聊天室</h2>
+    <div id="messages"></div>
+    <input type="text" id="message-input" placeholder="输入消息">
+    <button id="send-button">发送</button>
+</div>
+<script>
+    const messages = document.getElementById('messages');
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
+
+    // WebSocket连接到服务器
+    const socket = io('http://localhost:3000');
+
+    // 当连接建立时
+    socket.on('connect', () => {
+        console.log('Connected to WebSocket server');
+    });
+
+    // 异步函数，用于获取用户名和发送消息
+    const sendMessage = async () => {
+        const usernameResponse = await fetch('/auth/get-username');
+        const usernameData = await usernameResponse.json();
+        const username = usernameData.username;
+
+        const message = messageInput.value;
+
+        if (message) {
+            // 将用户名与消息一起发送
+            const fullMessage = `${username}: ${message}`;
+            socket.emit('message', fullMessage);
+            messageInput.value = '';
+            console.log(message);
+            console.log(`Username: ${username}`);
+            console.log(fullMessage);
+        }
+    };
+
+    // 当接收到消息时，将消息添加到聊天框
+    socket.on('message', (message) => {
+        const messageElement = document.createElement('p');
+        messageElement.textContent = message;
+        messages.appendChild(messageElement);
+    });
+
+    // 点击按钮时，调用 sendMessage 函数
+    sendButton.addEventListener('click', sendMessage);
+</script>
 
 </body>
 </html>
