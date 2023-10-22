@@ -11,7 +11,6 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const passport = require('passport');
 const session = require('express-session');
-const dbPool = require('./src/databasePool'); // 引入数据库连接池
 const config = require('./src/config/config'); // 引入配置文件
 const packageInfo = require('./package.json'); // 引入package.json
 const {logTime} = require('./src/logTime'); // 引入日志时间
@@ -29,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(session({
     secret: config.SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -44,14 +43,14 @@ app.get('/', (req, res) => {
 });
 
 // 路由导入
+const captchaRoutes = require('./src/routes/captchaRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 const chatRoutes = require('./src/routes/chatRoutes');
-const captchaRoutes = require('./src/routes/captchaRoutes');
 
 // 挂载路由模块
+app.use('/captcha', captchaRoutes);
 app.use('/auth', authRoutes);
 app.use('/chat', chatRoutes);
-app.use('/captcha', captchaRoutes);
 
 // 启动Socket.IO并处理WebSocket事件
 io.on('connection', (socket) => {

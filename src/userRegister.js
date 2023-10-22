@@ -1,5 +1,7 @@
-const express = require('express');
-const router = express.Router();
+/*
+    userRegister.js
+*/
+
 const crypto = require('crypto'); // 用于SHA-256哈希
 const db = require('./databasePool');
 const {logTime} = require("./logTime"); // 引入数据库连接池

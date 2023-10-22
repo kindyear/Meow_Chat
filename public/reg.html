@@ -66,17 +66,22 @@
 
     <label for="captcha">验证码:</label>
     <input type="text" id="captcha" name="captcha" required><br>
-    <img src="captcha_image.jpg" alt="验证码"><br>
+    <img src="http://localhost:3000/captcha" id="captchaImage" alt="验证码"><br>
     <div class="error-message" id="captchaError"></div><br>
 
     <input type="submit" value="注册">
 </form>
 
+
 <script>
+
+    const captchaImage = document.getElementById('captchaImage');
+    const timestamp = new Date().getTime();
+    captchaImage.src = `http://localhost:3000/captcha?${timestamp}`;
+
     function validateForm() {
         const password = document.getElementById("password").value;
         const password2 = document.getElementById("password2").value;
-        const captcha = document.getElementById("captcha").value;
 
         let valid = true;
 
@@ -89,13 +94,17 @@
             document.getElementById("password2").classList.remove("error");
         }
 
-        // 添加验证码验证逻辑
-        // 这里需要与服务器端交互来验证验证码的正确性
-
-        if (!valid) {
-            return false;
-        }
+        return valid;
     }
+    captchaImage.addEventListener('click', function() {
+        // 生成一个新的 URL，附加时间戳以确保浏览器不会缓存图片
+        const newURL = 'http://localhost:3000/captcha?' + new Date().getTime();
+
+        // 设置图片的 src 属性为新的 URL，以重新加载图片
+        captchaImage.src = newURL;
+    });
 </script>
+
+
 </body>
 </html>

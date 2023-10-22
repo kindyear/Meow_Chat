@@ -41,15 +41,33 @@
     </style>
 </head>
 <body>
-<h1>用户注册</h1>
-<form action="http://localhost:3000/auth/register" method="POST">
+<h1>用户登录</h1>
+<form action="http://localhost:3000/auth/login" method="POST">
     <label for="username">用户名:</label>
     <input type="text" id="username" name="username" required><br><br>
 
     <label for="password">密码:</label>
     <input type="password" id="password" name="password" required><br><br>
 
-    <input type="submit" value="注册">
+    <label for="captcha">验证码:</label>
+    <input type="text" id="captcha" name="captcha" required><br>
+    <img src="http://localhost:3000/captcha" id="captchaImage" alt="验证码"><br>
+    <div class="error-message" id="captchaError"></div><br>
+
+    <input type="submit" value="登录">
 </form>
 </body>
+<script>
+    const captchaImage = document.getElementById('captchaImage');
+    const timestamp = new Date().getTime();
+    captchaImage.src = `http://localhost:3000/captcha?${timestamp}`;
+
+    captchaImage.addEventListener('click', function() {
+        // 生成一个新的 URL，附加时间戳以确保浏览器不会缓存图片
+        const newURL = 'http://localhost:3000/captcha?' + new Date().getTime();
+
+        // 设置图片的 src 属性为新的 URL，以重新加载图片
+        captchaImage.src = newURL;
+    });
+</script>
 </html>
