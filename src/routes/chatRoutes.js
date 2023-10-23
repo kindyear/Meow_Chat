@@ -22,6 +22,7 @@ module.exports = (io) => {
     router.post('/api/send-message', requireLogin,(req, res) => {
         const { message } = req.body;
         const username = req.session.username;
+        console.log(username);
         const fullMessage = `${username}: ${message}`;
         io.emit('message', fullMessage);
         console.log(`${logTime()} Received message: ${fullMessage}`);

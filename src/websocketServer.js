@@ -1,5 +1,4 @@
 const socketIo = require('socket.io');
-
 function initializeWebSocketServer(server) {
     const io = socketIo(server, {
         cors: {
@@ -11,17 +10,11 @@ function initializeWebSocketServer(server) {
     io.on('connection', (socket) => {
         console.log('A user connected');
 
-        socket.on('message', (data) => {
+        socket.on('message', async (data) => {
             console.log('Received message:', data);
 
-            // 假设 data 包含了用户名和消息内容
-            const { username, message } = data;
-
-            // 构建带用户名前缀的消息
-            const fullMessage = `${username}: ${message}`;
-
             // 发送带用户名前缀的消息
-            io.emit('message', fullMessage);
+            io.emit('message', data);
         });
 
         socket.on('disconnect', () => {
