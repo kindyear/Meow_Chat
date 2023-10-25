@@ -1,62 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <meta charset="utf-8">
-    <title>用户登录</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        h1 {
-            color: #007BFF;
-        }
-
-        form {
-            width: 300px;
-            margin: 0 auto;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-        }
-
-        input[type="submit"] {
-            background-color: #007BFF;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<h1>用户登录</h1>
-<form action="http://localhost:3000/auth/login" method="POST">
-    <label for="username">用户名:</label>
-    <input type="text" id="username" name="username" required><br><br>
-
-    <label for="password">密码:</label>
-    <input type="password" id="password" name="password" required><br><br>
-
-    <label for="captcha">验证码:</label>
-    <input type="text" id="captcha" name="captcha" required><br>
-    <img src="http://localhost:3000/captcha" id="captchaImage" alt="验证码"><br>
-    <div class="error-message" id="captchaError"></div><br>
-
-    <input type="submit" value="登录">
+<div class="loginTitle">欢迎使用meow</div>
+<img class="loginImg" src="./img/紫色星空.png" alt="">
+<form class="loginBox" method="POST" action="http://localhost:3000/auth/login">
+    <div class="loginBoxTitle">謬  账号登录</div>
+    <input class="loginInput-name" type="text" name="username" id="username" placeholder=" 用户名/手机号" required>
+    <input class="loginInput-password" type="password" name="password" id="password" placeholder=" 密码" required>
+    <input class="loginInput-code" type="text" name="captcha" id="captcha" placeholder=" 请输入验证码" required>
+    <img class="codeImg" src="http://localhost:3000/captcha" id="captchaImage" alt="验证码"><br>
+    <button class="bt-login" id="loginButton" type="submit" value="登录">登录</button>
+    <button class="bt-register" type="button" onclick="window.location.href='../register/register.html'">注册</button>
+    <img class="icon-wechat" src="./img/微信.png" alt="">
+    <div class="miniFont-l">微信登录</div>
+    <img class="icon-qq" src="./img/QQ.png" alt="">
+    <div class="miniFont-r">微信登录</div>
+    <div class="text-bottom">阅读并接受《服务条款》和《隐私政策》</div>
 </form>
-</body>
+
 <script>
     const captchaImage = document.getElementById('captchaImage');
     const timestamp = new Date().getTime();
@@ -70,4 +36,5 @@
         captchaImage.src = newURL;
     });
 </script>
+</body>
 </html>

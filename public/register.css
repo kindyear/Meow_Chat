@@ -1,0 +1,218 @@
+body{
+    max-width: 1920px;
+    max-height: 1080px;
+    margin: 0 auto;
+    overflow-y: scroll;
+    background-color: #BBB2FF;
+}
+
+.loginTitle{
+    position: absolute;
+    float: left;
+    left: 141px;
+    top: 141px;
+    width: 704px;
+    height: 126px;
+    opacity: 1;
+    /** 文本1 */
+    font-size: 72px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 72px;
+    color: rgba(146, 247, 204, 1);
+    text-align: center;
+    vertical-align: top;
+}
+.loginImg{
+    position: absolute;
+    float: left;
+    display: block;
+    left: 170px;
+    top: 233px;
+    width: 704px;
+    height: 704px;
+    opacity: 1;
+}
+
+.loginBox{
+    position: absolute;
+    float: left;
+    left: 1134px;
+    top: 188px;
+    width: 592px;
+    height: 704px;
+    opacity: 1;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 1);
+}
+
+.loginBoxTitle{
+    position: fixed;
+    float: left;
+    left: 1325px;
+    top: 233px;
+    width: 224px;
+    height: 52px;
+    opacity: 1;
+    /** 文本1 */
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    line-height: 52px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: top;
+}
+
+.loginInput-name{
+    position: fixed;
+    display: block;
+    left: 1247px;
+    top: 318px;
+    width: 375px;
+    height: 85px;
+    opacity: 1;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 52px;
+    color: rgba(166, 166, 166, 1);
+    text-align: left;
+    vertical-align: middle;
+    font-style: italic; /* 设置斜体样式 */
+}
+
+.loginInput-password{
+    position: fixed;
+    display: block;
+    left: 1249px;
+    top: 426px;
+    width: 375px;
+    height: 85px;
+    opacity: 1;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 52px;
+    color: rgba(166, 166, 166, 1);
+    text-align: left;
+    vertical-align: middle;
+    font-style: italic; /* 设置斜体样式 */
+}
+
+.loginInput-repassword{
+    position: fixed;
+    display: block;
+    left: 1247px;
+    top: 550px;
+    width: 375px;
+    height: 95px;
+    opacity: 1;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 52.13px;
+    color: rgba(166, 166, 166, 1);
+    text-align: left;
+    vertical-align: middle;
+    font-style: italic; /* 设置斜体样式 */
+}
+
+.bt-register{
+    position: fixed;
+    display: block;
+    left: 1367px;
+    top: 725px;
+    width: 140px;
+    height: 60px;
+    opacity: 1;
+    border-radius: 20px;
+    border: none;
+    background: rgba(187, 178, 255, 1);
+
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 52.13px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: middle;
+    /*修改*/
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+}
+
+.registCode{
+    position: fixed;
+    display: block;
+    left: 1247px;
+    top: 666px;
+    width: 155px;
+    height: 52px;
+    opacity: 1;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 34.75px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: middle;
+    font-style: italic;
+}
+
+.codeImg{
+    position: fixed;
+    display: block;
+    left: 1446px;
+    top: 666px;
+    width: 176px;
+    height: 52px;
+    opacity: 1;
+    background: rgba(204, 204, 204, 1);
+}
+/*修改*/
+.bt-register:hover{
+    background-color: #3498db; /* 更改背景颜色 */
+    color: #fff; /* 更改文本颜色 */
+}
+/*修改*/
+.bt-register:active{
+    background-color: #2980b9; /* 更改背景颜色 */
+    color: #fff; /* 更改文本颜色 */
+}
+
+
+.text-bottom{
+    position: fixed;
+    display: block;
+    left: 1268px;
+    top: 840px;
+    width: 339px;
+    height: 24px;
+    opacity: 1;
+    /** 文本1 */
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: top;
+}

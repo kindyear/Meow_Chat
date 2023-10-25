@@ -9,14 +9,11 @@ function initializeWebSocketServer(server) {
 
     io.on('connection', (socket) => {
         console.log('A user connected');
-
         socket.on('message', async (data) => {
             console.log('Received message:', data);
-
             // 发送带用户名前缀的消息
             io.emit('message', data);
         });
-
         socket.on('disconnect', () => {
             console.log('A user disconnected');
         });

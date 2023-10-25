@@ -1,80 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <meta charset="utf-8">
-    <title>用户注册</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        h1 {
-            color: #007BFF;
-        }
-
-        form {
-            width: 300px;
-            margin: 0 auto;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-        }
-
-        input[type="password2"] {
-            border-color: #dc3545;
-        }
-
-        input[type="submit"] {
-            background-color: #007BFF;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        .error-message {
-            color: #dc3545;
-            font-size: 14px;
-            margin-top: -10px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="./register.css">
 </head>
 <body>
-<h1>用户注册</h1>
-<form action="http://localhost:3000/auth/register" method="POST" onsubmit="return validateForm()">
-    <label for="username">用户名:</label>
-    <input type="text" id="username" name="username" required><br><br>
+<div class="loginTitle">欢迎使用meow</div>
+<img class="loginImg" src="./img/蓝紫色星空.png" alt="">
+<div class="loginBox">
+    <div class="loginBoxTitle">謬  账号注册</div>
+    <form action="http://localhost:3000/auth/register" method="POST" onsubmit="return validateForm()">
+        <label for="username"></label>
+        <input class="loginInput-name" type="text" name="username" id="username" placeholder=" 用户名/手机号">
 
-    <label for="password">密码:</label>
-    <input type="password" id="password" name="password" required><br><br>
+        <label for="password"></label>
+        <input class="loginInput-password" type="password" name="password" id="password" placeholder=" 密码">
 
-    <label for="password2">确认密码:</label>
-    <input type="password" id="password2" name="password2" required><br>
-    <div class="error-message" id="passwordError"></div><br>
+        <label for="password2"></label>
+        <input class="loginInput-repassword" type="password" name="password2" id="password2" placeholder=" 确认密码">
 
-    <label for="captcha">验证码:</label>
-    <input type="text" id="captcha" name="captcha" required><br>
-    <img src="http://localhost:3000/captcha" id="captchaImage" alt="验证码"><br>
-    <div class="error-message" id="captchaError"></div><br>
+        <label for="captcha"></label>
+        <input class="registCode" type="text" name="captcha" id="captcha" placeholder="验证码">
 
-    <input type="submit" value="注册">
-</form>
+        <img class="codeImg" src="http://localhost:3000/captcha" id="captchaImage" alt="验证码">
+        <input class="bt-register" type="submit" value="注册">
 
-
+    </form>
+    <div class="text-bottom">阅读并接受《服务条款》和《隐私政策》</div>
+</div>
+</body>
 <script>
-
     const captchaImage = document.getElementById('captchaImage');
     const timestamp = new Date().getTime();
     captchaImage.src = `http://localhost:3000/captcha?${timestamp}`;
@@ -104,7 +60,4 @@
         captchaImage.src = newURL;
     });
 </script>
-
-
-</body>
 </html>
