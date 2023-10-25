@@ -1,0 +1,286 @@
+body{
+    max-width: 1920px;
+    max-height: 1080px;
+    margin: 0 auto;
+    overflow-y: scroll;
+    background-color: #BBB2FF;
+}
+
+.loginTitle{
+    position: absolute;
+    float: left;
+    left: 141px;
+    top: 141px;
+    width: 704px;
+    height: 126px;
+    opacity: 1;
+    /** 文本1 */
+    font-size: 72px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 72px;
+    color: rgba(146, 247, 204, 1);
+    text-align: center;
+    vertical-align: top;
+}
+.loginImg{
+    position: absolute;
+    float: left;
+    display: block;
+    left: 170px;
+    top: 233px;
+    width: 704px;
+    height: 704px;
+    opacity: 1;
+}
+
+.loginBox{
+    position: absolute;
+    float: left;
+    left: 1134px;
+    top: 188px;
+    width: 592px;
+    height: 704px;
+    opacity: 1;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 1);
+}
+
+.loginBoxTitle{
+    position: fixed;
+    float: left;
+    left: 1325px;
+    top: 233px;
+    width: 224px;
+    height: 52px;
+    opacity: 1;
+    /** 文本1 */
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 52px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: top;
+}
+
+.loginInput-name{
+    position: fixed;
+    display: block;
+    left: 1247px;
+    top: 318px;
+    width: 375px;
+    height: 85px;
+    opacity: 1;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 52px;
+    color: rgba(166, 166, 166, 1);
+    text-align: left;
+    vertical-align: middle;
+    font-style: italic; /* 设置斜体样式 */
+}
+
+.loginInput-password{
+    position: fixed;
+    display: block;
+    left: 1249px;
+    top: 426px;
+    width: 375px;
+    height: 85px;
+    opacity: 1;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 52px;
+    color: rgba(166, 166, 166, 1);
+    text-align: left;
+    vertical-align: middle;
+    font-style: italic; /* 设置斜体样式 */
+}
+
+.loginInput-code{
+    position: fixed;
+    display: block;
+    left: 1249px;
+    top: 534px;
+    width: 176px;
+    height: 65px;
+    opacity: 1;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 1);
+
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 35px;
+    color: rgba(128, 128, 128, 1);
+    text-align: left;
+    vertical-align: top;
+    font-style: italic; /* 设置斜体样式 */
+}
+
+.codeImg{
+    position: fixed;
+    display: block;
+    left: 1445px;
+    top: 540px;
+    width: 176px;
+    height: 51px;
+    opacity: 1;
+    background: rgba(204, 204, 204, 1);
+}
+
+.bt-login{
+    position: fixed;
+    display: block;
+    left: 1249px;
+    top: 621px;
+    width: 140px;
+    height: 60px;
+    opacity: 1;
+    border-radius: 20px;
+    border: none;
+    background: rgba(187, 178, 255, 1);
+
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 52px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: middle;
+    /*修改*/
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+}
+/*修改*/
+.bt-login:hover{
+    background-color: #3498db; /* 更改背景颜色 */
+    color: #fff; /* 更改文本颜色 */
+}
+/*修改*/
+.bt-login:active{
+    background-color: #2980b9; /* 更改背景颜色 */
+    color: #fff; /* 更改文本颜色 */
+}
+
+.bt-register{
+    position: fixed;
+    display: block;
+    left: 1487px;
+    top: 622px;
+    width: 140px;
+    height: 60px;
+    opacity: 1;
+    border-radius: 20px;
+    border: none;
+    background: rgba(187, 178, 255, 1);
+
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 52px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: middle;
+    /*修改*/
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+}
+
+/*修改*/
+.bt-register:hover{
+    background-color: #3498db; /* 更改背景颜色 */
+    color: #fff; /* 更改文本颜色 */
+}
+/*修改*/
+.bt-register:active{
+    background-color: #2980b9; /* 更改背景颜色 */
+    color: #fff; /* 更改文本颜色 */
+}
+
+.icon-wechat{
+    position: fixed;
+    display: block;
+    left: 1259px;
+    top: 720px;
+    width: 52px;
+    height: 52px;
+    opacity: 1;
+}
+
+.icon-qq{
+    position: fixed;
+    display: block;
+    left: 1482px;
+    top: 720px;
+    width: 52px;
+    height: 52px;
+    opacity: 1;
+}
+
+.miniFont-l{
+    position: fixed;
+    display: block;
+    left: 1318px;
+    top: 735px;
+    width: 71px;
+    height: 18px;
+    opacity: 1;
+    /** 文本1 */
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 20px;
+    color: rgba(128, 128, 128, 1);
+    text-align: center;
+    vertical-align: top;
+}
+
+.miniFont-r{
+    position: fixed;
+    display: block;
+    left: 1539px;
+    top: 735px;
+    width: 71px;
+    height: 17px;
+    opacity: 1;
+    /** 文本1 */
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 20px;
+    color: rgba(128, 128, 128, 1);
+    text-align: center;
+    vertical-align: top;
+}
+
+.text-bottom{
+    position: fixed;
+    display: block;
+    left: 1268px;
+    top: 840px;
+    width: 339px;
+    height: 24px;
+    opacity: 1;
+    /** 文本1 */
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: top;
+}
