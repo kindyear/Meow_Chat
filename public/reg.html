@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
-    <link rel="stylesheet" href="./register.css">
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
 <div class="loginTitle">欢迎使用meow</div>
@@ -11,7 +11,7 @@
 <div class="loginBox">
     <button class="back" onclick="window.location.href='login.html'">登录</button>
     <div class="loginBoxTitle">謬  账号注册</div>
-    <form action="http://localhost:3000/auth/register" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
+    <form action="/auth/register" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
         <label for="username"></label>
         <input class="registerInput" type="text" name="username" id="username" placeholder=" 用户名/手机号">
 
@@ -39,7 +39,7 @@
 <script>
     const captchaImage = document.getElementById('captchaImage');
     const timestamp = new Date().getTime();
-    captchaImage.src = `http://localhost:3000/captcha?${timestamp}`;
+    captchaImage.src = `${window.location.origin}/captcha?${timestamp}`;
 
     function validateForm() {
         const password = document.getElementById("password").value;
@@ -60,7 +60,7 @@
     }
     captchaImage.addEventListener('click', function() {
         // 生成一个新的 URL，附加时间戳以确保浏览器不会缓存图片
-        const newURL = 'http://localhost:3000/captcha?' + new Date().getTime();
+        const newURL = `${window.location.origin}/captcha?` + new Date().getTime();
 
         // 设置图片的 src 属性为新的 URL，以重新加载图片
         captchaImage.src = newURL;

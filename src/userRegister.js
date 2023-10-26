@@ -24,7 +24,6 @@ const upload = multer({ storage: storage });
 // 处理用户注册逻辑
 async function handleRegistration(username, password, avatar) {
 
-    console.log('In handleRegistration\'s avatar',avatar);
     // 检查用户名是否已经存在
     const userExists = await checkIfUserExists(username);
 
@@ -42,7 +41,7 @@ async function handleRegistration(username, password, avatar) {
         console.log(`${logTime()} New user registered: username: \u001b[33m${username}\u001b[0m`);
         return { success: true, message: '注册成功' };
     } catch (err) {
-        console.error('Error registering user:', err);
+        console.error(`${logTime()} Error registering user:`, err);
         return { success: false, message: '注册失败' };
     }
 }

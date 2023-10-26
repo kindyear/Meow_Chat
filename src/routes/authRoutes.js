@@ -1,3 +1,7 @@
+/*
+    authRoutes.js
+*/
+
 const express = require('express');
 const {logTime} = require("../logTime");
 const router = express.Router();
@@ -50,8 +54,8 @@ router.post('/register', upload.single('avatar'), async (req, res) => {
     const { username, password, captcha } = req.body;
     const avatar = req.file ? req.file.filename : null;
 
-    console.log('Uploaded file:', req.file);
-    console.log('Avatar:', avatar);
+    console.log(`${logTime()} Uploaded file:`, req.file);
+    console.log(`${logTime()} Avatar:`, avatar);
 
     if (!username || !password || !captcha) {
         return res.status(400).json({ message: '用户名、密码和验证码是必需的' });
@@ -63,10 +67,6 @@ router.post('/register', upload.single('avatar'), async (req, res) => {
     if (captcha.toLowerCase() !== storedCaptcha.toLowerCase()) {
         return res.status(400).json({ message: '验证码不正确' });
     }
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Avatar:', avatar);
-    console.log('Running register.handleRegistration');
     const registrationResult = await handleRegistration(username, password, avatar);
 
     if (registrationResult.success) {

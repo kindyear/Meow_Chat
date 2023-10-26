@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 <div class="loginTitle">欢迎使用meow</div>
 <img class="loginImg" src="./img/紫色星空.png" alt="">
-<form class="loginBox" method="POST" action="http://localhost:3000/auth/login">
+<form class="loginBox" method="POST" action="/auth/login">
     <div class="loginBoxTitle">謬  账号登录</div>
     <input class="loginInput-name" type="text" name="username" id="username" placeholder=" 用户名/手机号" required>
     <input class="loginInput-password" type="password" name="password" id="password" placeholder=" 密码" required>
     <input class="loginInput-code" type="text" name="captcha" id="captcha" placeholder=" 请输入验证码" required>
-    <img class="codeImg" src="http://localhost:3000/captcha" id="captchaImage" alt="验证码"><br>
+    <img class="codeImg" src="captcha" id="captchaImage" alt="验证码"><br>
     <button class="bt-login" id="loginButton" type="submit" value="登录">登录</button>
     <button class="bt-register" type="button" onclick="window.location.href='reg.html'">注册</button>
     <img class="icon-wechat" src="./img/微信.png" alt="">
@@ -27,11 +27,11 @@
 <script>
     const captchaImage = document.getElementById('captchaImage');
     const timestamp = new Date().getTime();
-    captchaImage.src = `http://localhost:3000/captcha?${timestamp}`;
+    captchaImage.src = `${window.location.origin}/captcha?${timestamp}`;
 
     captchaImage.addEventListener('click', function() {
         // 生成一个新的 URL，附加时间戳以确保浏览器不会缓存图片
-        const newURL = 'http://localhost:3000/captcha?' + new Date().getTime();
+        const newURL = `${window.location.origin}/captcha?` + new Date().getTime();
 
         // 设置图片的 src 属性为新的 URL，以重新加载图片
         captchaImage.src = newURL;

@@ -1,4 +1,5 @@
 /*
+    app.js
     Meow Chat Backend
     Date: 2023/10/19
     Author: KINDYEAR
@@ -41,7 +42,7 @@ app.use(express.static('public'));
 // 定义路由
 app.get('/', (req, res) => {
     console.log(`${logTime()} Request to \u001b[33m/\u001b[0m from \u001b[33m${req.ip}\u001b[0m`);
-    res.send('MAIN ROUTE');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.get('/login',(req,res)=>{
@@ -49,7 +50,7 @@ app.get('/login',(req,res)=>{
     res.sendFile(__dirname + '/public/login.html');
 })
 app.get('/register',(req,res)=>{
-    console.log(`${logTime()} Request to \u001b[33m/reg\u001b[0m from \u001b[33m${req.ip}\u001b[0m`);
+    console.log(`${logTime()} Request to \u001b[33m/register\u001b[0m from \u001b[33m${req.ip}\u001b[0m`);
     res.sendFile(__dirname + '/public/reg.html');
 })
 

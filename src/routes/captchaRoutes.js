@@ -1,6 +1,7 @@
 /*
     captchaRoutes.js
 */
+
 const router = require('express').Router();
 const svgCaptcha = require('svg-captcha');
 const {logTime} = require("../logTime");
