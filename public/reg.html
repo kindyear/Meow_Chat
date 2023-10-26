@@ -9,16 +9,22 @@
 <div class="loginTitle">欢迎使用meow</div>
 <img class="loginImg" src="./img/蓝紫色星空.png" alt="">
 <div class="loginBox">
+    <button class="back" onclick="window.location.href='login.html'">登录</button>
     <div class="loginBoxTitle">謬  账号注册</div>
-    <form action="http://localhost:3000/auth/register" method="POST" onsubmit="return validateForm()">
+    <form action="http://localhost:3000/auth/register" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
         <label for="username"></label>
-        <input class="loginInput-name" type="text" name="username" id="username" placeholder=" 用户名/手机号">
+        <input class="registerInput" type="text" name="username" id="username" placeholder=" 用户名/手机号">
 
         <label for="password"></label>
-        <input class="loginInput-password" type="password" name="password" id="password" placeholder=" 密码">
+        <input class="registerInput" type="password" name="password" id="password" placeholder=" 密码">
 
         <label for="password2"></label>
-        <input class="loginInput-repassword" type="password" name="password2" id="password2" placeholder=" 确认密码">
+        <input class="registerInput" type="password" name="password2" id="password2" placeholder=" 确认密码">
+
+        <label class="headImg" for="avatar">
+            上传头像
+            <input class="headImg" type="file" name="avatar" id="avatar">
+        </label>
 
         <label for="captcha"></label>
         <input class="registCode" type="text" name="captcha" id="captcha" placeholder="验证码">

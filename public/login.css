@@ -7,7 +7,7 @@ body{
 }
 
 .loginTitle{
-    position: absolute;
+    position: fixed;
     float: left;
     left: 141px;
     top: 141px;

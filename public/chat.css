@@ -6,7 +6,7 @@ body{
 }
 /*三个主要板块*/
 .leftBox{
-    position: absolute;
+    position: fixed;
     float: left;
     left: 0px;
     top: 0px;
@@ -19,7 +19,7 @@ body{
 }
 
 .centerBox{
-    position: absolute;
+    position: fixed;
     float: left;
     left: 180px;
     top: 0px;
@@ -32,7 +32,7 @@ body{
 }
 
 .rightBox{
-    position: absolute;
+    position: fixed;
     float: left;
     left: 701px;
     top: 0px;
@@ -40,7 +40,7 @@ body{
     height: 1080px;
 }
 /*左侧板块*/
-#lPic{
+#default-avatar{
     position: fixed;
     left: 40px;
     top: 44px;
@@ -190,7 +190,7 @@ body{
     vertical-align: middle;
 }
 
-.chatWindow{
+.messages{
     position: absolute;
     left: 0px;
     top: 106px;
@@ -199,7 +199,39 @@ body{
     opacity: 1;
     background: rgba(255, 255, 255, 1);
 
+
     border-bottom: 1px solid rgba(146, 247, 204, 1);
+    overflow-y: scroll;
+}
+
+.messages p{
+    position: static;
+    display: block;
+    width: auto;
+    height: 80px;
+    margin-left: 140px;
+    padding-left: 16px;
+    opacity: 1;
+    border-radius: 100px;
+    background: rgba(146, 247, 204, 1);
+    /** 文本1 */
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 80px;
+    color: rgba(0, 0, 0, 1);
+    text-align: left;
+    vertical-align: middle;
+}
+
+.messages img{
+    display: block;
+    width: 92px;
+    float: left;
+    margin-left: 30px;
+    border-radius: 100px;
+    border-color: darkslategray;
+    border-width: 5px;
 }
 
 .writeBox{

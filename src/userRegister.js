@@ -4,10 +4,27 @@
 
 const crypto = require('crypto'); // 用于SHA-256哈希
 const db = require('./databasePool');
-const {logTime} = require("./logTime");
+const multer = require('multer'); // 用于处理上传的文件
+const path = require('path'); // 用于处理文件路径
+const { logTime } = require('./logTime');
+
+// 配置 Multer 存储
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads/avatars'); // 指定存储目录
+    },
+    filename: (req, file, cb) => {
+        const extname = path.extname(file.originalname);
+        cb(null, Date.now() + extname); // 为文件重命名
+    },
+});
+
+const upload = multer({ storage: storage });
 
 // 处理用户注册逻辑
-async function handleRegistration(username, password) {
+async function handleRegistration(username, password, avatar) {
+
+    console.log('In handleRegistration\'s avatar',avatar);
     // 检查用户名是否已经存在
     const userExists = await checkIfUserExists(username);
 
@@ -19,10 +36,10 @@ async function handleRegistration(username, password) {
     const hashedPassword = hashPassword(password);
 
     // 将用户信息存储到数据库
-    const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
+    const query = 'INSERT INTO users (username, password, avatar) VALUES (?, ?, ?)';
     try {
-        const [rows, fields] = await db.promise().query(query, [username, hashedPassword]);
-        console.log(`${logTime()} New user register: username: \u001b[33m${username}\u001b[0m`);
+        const [rows, fields] = await db.promise().query(query, [username, hashedPassword, avatar]);
+        console.log(`${logTime()} New user registered: username: \u001b[33m${username}\u001b[0m`);
         return { success: true, message: '注册成功' };
     } catch (err) {
         console.error('Error registering user:', err);
@@ -45,5 +62,6 @@ function hashPassword(password) {
 }
 
 module.exports = {
-    handleRegistration
+    handleRegistration,
+    upload,
 };

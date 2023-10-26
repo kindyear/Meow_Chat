@@ -44,6 +44,15 @@ app.get('/', (req, res) => {
     res.send('MAIN ROUTE');
 });
 
+app.get('/login',(req,res)=>{
+    console.log(`${logTime()} Request to \u001b[33m/login\u001b[0m from \u001b[33m${req.ip}\u001b[0m`);
+    res.sendFile(__dirname + '/public/login.html');
+})
+app.get('/register',(req,res)=>{
+    console.log(`${logTime()} Request to \u001b[33m/reg\u001b[0m from \u001b[33m${req.ip}\u001b[0m`);
+    res.sendFile(__dirname + '/public/reg.html');
+})
+
 const io = initializeWebSocketServer(http);
 
 // 路由导入

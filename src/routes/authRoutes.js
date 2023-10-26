@@ -1,12 +1,10 @@
 const express = require('express');
 const {logTime} = require("../logTime");
 const router = express.Router();
-const passport = require('passport');
 
-
-const register = require('../userRegister');
+const {upload, handleRegistration} = require('../userRegister');
 const login = require('../userLogin');
-const logout = require('../userLogout');
+const getAvatar = require('../getAvatar');
 
 
 // 用户登录路由
@@ -47,9 +45,14 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', upload.single('avatar'), async (req, res) => {
     console.log(`${logTime()} Request to \u001b[33m/register\u001b[0m from \u001b[33m${req.ip}\u001b[0m`);
     const { username, password, captcha } = req.body;
+    const avatar = req.file ? req.file.filename : null;
+
+    console.log('Uploaded file:', req.file);
+    console.log('Avatar:', avatar);
+
     if (!username || !password || !captcha) {
         return res.status(400).json({ message: '用户名、密码和验证码是必需的' });
     }
@@ -60,8 +63,11 @@ router.post('/register', async (req, res) => {
     if (captcha.toLowerCase() !== storedCaptcha.toLowerCase()) {
         return res.status(400).json({ message: '验证码不正确' });
     }
-
-    const registrationResult = await register.handleRegistration(username, password);
+    console.log('Username:', username);
+    console.log('Password:', password);
+    console.log('Avatar:', avatar);
+    console.log('Running register.handleRegistration');
+    const registrationResult = await handleRegistration(username, password, avatar);
 
     if (registrationResult.success) {
         req.session.username = username;
@@ -75,6 +81,24 @@ router.get('/get-username', (req, res) => {
     const username = req.session.username;
     res.json({ username });
 });
+
+router.get('/get-avatar', async (req, res) => {
+    let username = req.query.username || req.session.username; // 检查传入的参数，否则使用session的username
+
+    if (!username) {
+        return res.status(400).json({ message: '未提供用户名' });
+    }
+
+    const avatar = await getAvatar.getAvatar(username);
+
+    if (avatar) {
+        res.json({ avatar });
+    } else {
+        res.status(404).json({ message: '找不到用户或用户没有上传头像' });
+    }
+});
+
+
 
 // router.get('/logout', (req, res) => {
 //     console.log(`${logTime()} Request to \u001b[33m/logout\u001b[0m from \u001b[33m${req.ip}\u001b[0m`);
