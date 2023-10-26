@@ -71,7 +71,7 @@ body{
 }
 /*中间板块*/
 .search{
-    background-image: url('../picture/搜索.png');
+    background-image: url('../img/搜索.png');
     background-size: 55px 55px; /* 设置图像大小 */
     background-repeat: no-repeat; /* 防止图像平铺 */
     padding-left: 56px; /* 留出图像的空间 */
@@ -131,7 +131,7 @@ body{
     display: block;
     left: 292px;
     top: 145px;
-    width: 112px;
+    width: auto;
     height: 30px;
     opacity: 1;
     /** 文本1 */
@@ -148,7 +148,7 @@ body{
     display: block;
     left: 292px;
     top: 180px;
-    width: 188px;
+    width: auto;
     height: 35px;
     opacity: 1;
     /** 文本1 */
@@ -177,7 +177,7 @@ body{
     position: fixed;
     left: 731px;
     top: 0px;
-    width: 250px;
+    width: auto;
     height: 60px;
     opacity: 1;
     /** 文本1 */
@@ -191,6 +191,10 @@ body{
 }
 
 .messages{
+    display: flex;
+    flex-direction: column; /* 垂直布局 */
+    align-items: flex-start; /* 左对齐，可以根据需要调整对齐方式 */
+
     position: absolute;
     left: 0px;
     top: 106px;
@@ -199,18 +203,29 @@ body{
     opacity: 1;
     background: rgba(255, 255, 255, 1);
 
-
     border-bottom: 1px solid rgba(146, 247, 204, 1);
     overflow-y: scroll;
 }
 
+
+.message-container {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
 .messages p{
+    max-width: 70%; /* 设置最大宽度，以防止消息框过宽 */
+    word-wrap: break-word; /* 长单词或链接换行 */
+
     position: static;
     display: block;
     width: auto;
     height: 80px;
-    margin-left: 140px;
-    padding-left: 16px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-left: 40px;
+    padding-right: 40px;;
     opacity: 1;
     border-radius: 100px;
     background: rgba(146, 247, 204, 1);
@@ -232,6 +247,14 @@ body{
     border-radius: 100px;
     border-color: darkslategray;
     border-width: 5px;
+}
+
+.message {
+    background: rgba(146, 247, 204, 1);
+    border-radius: 10px;
+    padding: 10px;
+    word-wrap: break-word;
+    max-width: 70%; /* Limit message width */
 }
 
 .writeBox{
@@ -280,6 +303,8 @@ body{
     display: block;
     width: 1220px;
     height: 150px;
+    padding-left: 40px;
+    padding-top: 20px;
     background: rgba(255, 255, 255, 1);
     outline: none;
     border: none transparent;

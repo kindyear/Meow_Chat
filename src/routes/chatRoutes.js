@@ -17,9 +17,13 @@ module.exports = (io) => {
     }
 
     // 聊天页面路由
-    router.get('/chat', (req, res) => {
+    router.get('/', (req, res) => {
         console.log(`${logTime()} Request to \u001b[33m/chat\u001b[0m from \u001b[33m${req.ip}\u001b[0m`);
-        res.sendFile(__dirname + '../../public/chat.html');
+        if (req.session.username === undefined){
+            res.sendFile(__dirname + '../../public/login.html');
+        } else {
+            res.sendFile(__dirname + '../../public/chat.html');
+        }
     });
 
     // 聊天API端点
